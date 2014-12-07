@@ -1,0 +1,540 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		DD3935B119F25C03001618EC /* questionsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DD3935B019F25C03001618EC /* questionsViewController.m */; };
+		DD3935BD19F25E75001618EC /* webViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DD3935BC19F25E75001618EC /* webViewController.m */; };
+		DD3935C019F25EB2001618EC /* detailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DD3935BF19F25EB2001618EC /* detailViewController.m */; };
+		DD3935C819F25F61001618EC /* userAgreement.txt in Resources */ = {isa = PBXBuildFile; fileRef = DD3935C619F25F61001618EC /* userAgreement.txt */; };
+		DD3935D219F25FEF001618EC /* resultsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DD3935D119F25FEF001618EC /* resultsTableViewCell.m */; };
+		DD3935D819F26081001618EC /* collegeObject.m in Sources */ = {isa = PBXBuildFile; fileRef = DD3935D719F26081001618EC /* collegeObject.m */; };
+		DD3935DB19F260BB001618EC /* questionTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DD3935DA19F260BB001618EC /* questionTableViewCell.m */; };
+		DD6B64D41A34379900649302 /* resultsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DD6B64D31A34379900649302 /* resultsTableViewController.m */; };
+		DDBBBBA41A2073EC002B67EA /* tutorialViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DDBBBBA31A2073EC002B67EA /* tutorialViewController.m */; };
+		DDC09F111A1CC10700F2A354 /* filtersViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DDC09F101A1CC10700F2A354 /* filtersViewController.m */; };
+		DDC09F131A1CC95100F2A354 /* questions.xml in Resources */ = {isa = PBXBuildFile; fileRef = DDC09F121A1CC95100F2A354 /* questions.xml */; };
+		DDC09F151A1CC9F200F2A354 /* information.xml in Resources */ = {isa = PBXBuildFile; fileRef = DDC09F141A1CC9F200F2A354 /* information.xml */; };
+		DDC09F181A1CCA6F00F2A354 /* questionsXMLParser.m in Sources */ = {isa = PBXBuildFile; fileRef = DDC09F171A1CCA6F00F2A354 /* questionsXMLParser.m */; };
+		DDC09F1B1A1CCC8F00F2A354 /* infoXMLParser.m in Sources */ = {isa = PBXBuildFile; fileRef = DDC09F1A1A1CCC8F00F2A354 /* infoXMLParser.m */; };
+		DDC09F1F1A1CD84100F2A354 /* userAgreementViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DDC09F1E1A1CD84000F2A354 /* userAgreementViewController.m */; };
+		DDD9812B1A1A45D90057D2A0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DDD9812A1A1A45D90057D2A0 /* Main.storyboard */; };
+		DDE22D9C19EA8B9B0071302B /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = DDE22D9B19EA8B9B0071302B /* main.m */; };
+		DDE22D9F19EA8B9B0071302B /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = DDE22D9E19EA8B9B0071302B /* AppDelegate.m */; };
+		DDE22DA719EA8B9B0071302B /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DDE22DA619EA8B9B0071302B /* Images.xcassets */; };
+		DDE22DAA19EA8B9B0071302B /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = DDE22DA819EA8B9B0071302B /* LaunchScreen.xib */; };
+		DDE22DB619EA8B9B0071302B /* CollegeRankingsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = DDE22DB519EA8B9B0071302B /* CollegeRankingsTests.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		DDE22DB019EA8B9B0071302B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = DDE22D8E19EA8B9A0071302B /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = DDE22D9519EA8B9B0071302B;
+			remoteInfo = CollegeRankings;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		DD3935AF19F25C03001618EC /* questionsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = questionsViewController.h; sourceTree = "<group>"; };
+		DD3935B019F25C03001618EC /* questionsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = questionsViewController.m; sourceTree = "<group>"; };
+		DD3935BB19F25E75001618EC /* webViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = webViewController.h; sourceTree = "<group>"; };
+		DD3935BC19F25E75001618EC /* webViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = webViewController.m; sourceTree = "<group>"; };
+		DD3935BE19F25EB2001618EC /* detailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = detailViewController.h; sourceTree = "<group>"; };
+		DD3935BF19F25EB2001618EC /* detailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = detailViewController.m; sourceTree = "<group>"; };
+		DD3935C619F25F61001618EC /* userAgreement.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = userAgreement.txt; sourceTree = "<group>"; };
+		DD3935CE19F25F9A001618EC /* collegeData.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = collegeData.h; sourceTree = "<group>"; };
+		DD3935D019F25FEF001618EC /* resultsTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = resultsTableViewCell.h; sourceTree = "<group>"; };
+		DD3935D119F25FEF001618EC /* resultsTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = resultsTableViewCell.m; sourceTree = "<group>"; };
+		DD3935D619F26081001618EC /* collegeObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = collegeObject.h; sourceTree = "<group>"; };
+		DD3935D719F26081001618EC /* collegeObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = collegeObject.m; sourceTree = "<group>"; };
+		DD3935D919F260BB001618EC /* questionTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = questionTableViewCell.h; sourceTree = "<group>"; };
+		DD3935DA19F260BB001618EC /* questionTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = questionTableViewCell.m; sourceTree = "<group>"; };
+		DD6B64D21A34379900649302 /* resultsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = resultsTableViewController.h; sourceTree = "<group>"; };
+		DD6B64D31A34379900649302 /* resultsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = resultsTableViewController.m; sourceTree = "<group>"; };
+		DDBBBBA21A2073EC002B67EA /* tutorialViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = tutorialViewController.h; sourceTree = "<group>"; };
+		DDBBBBA31A2073EC002B67EA /* tutorialViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = tutorialViewController.m; sourceTree = "<group>"; };
+		DDC09F0F1A1CC10700F2A354 /* filtersViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = filtersViewController.h; sourceTree = "<group>"; };
+		DDC09F101A1CC10700F2A354 /* filtersViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = filtersViewController.m; sourceTree = "<group>"; };
+		DDC09F121A1CC95100F2A354 /* questions.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = questions.xml; sourceTree = "<group>"; };
+		DDC09F141A1CC9F200F2A354 /* information.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = information.xml; sourceTree = "<group>"; };
+		DDC09F161A1CCA6F00F2A354 /* questionsXMLParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = questionsXMLParser.h; sourceTree = "<group>"; };
+		DDC09F171A1CCA6F00F2A354 /* questionsXMLParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = questionsXMLParser.m; sourceTree = "<group>"; };
+		DDC09F191A1CCC8F00F2A354 /* infoXMLParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = infoXMLParser.h; sourceTree = "<group>"; };
+		DDC09F1A1A1CCC8F00F2A354 /* infoXMLParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = infoXMLParser.m; sourceTree = "<group>"; };
+		DDC09F1D1A1CD84000F2A354 /* userAgreementViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = userAgreementViewController.h; sourceTree = "<group>"; };
+		DDC09F1E1A1CD84000F2A354 /* userAgreementViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = userAgreementViewController.m; sourceTree = "<group>"; };
+		DDD9812A1A1A45D90057D2A0 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		DDE22D9619EA8B9B0071302B /* CollegeRankings.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CollegeRankings.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		DDE22D9A19EA8B9B0071302B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		DDE22D9B19EA8B9B0071302B /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		DDE22D9D19EA8B9B0071302B /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		DDE22D9E19EA8B9B0071302B /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		DDE22DA619EA8B9B0071302B /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		DDE22DA919EA8B9B0071302B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
+		DDE22DAF19EA8B9B0071302B /* CollegeRankingsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CollegeRankingsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		DDE22DB419EA8B9B0071302B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		DDE22DB519EA8B9B0071302B /* CollegeRankingsTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CollegeRankingsTests.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		DDE22D9319EA8B9B0071302B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DDE22DAC19EA8B9B0071302B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		DD3935C119F25F25001618EC /* dataFiles */ = {
+			isa = PBXGroup;
+			children = (
+				DD3935C619F25F61001618EC /* userAgreement.txt */,
+				DD3935CE19F25F9A001618EC /* collegeData.h */,
+				DDC09F121A1CC95100F2A354 /* questions.xml */,
+				DDC09F141A1CC9F200F2A354 /* information.xml */,
+			);
+			name = dataFiles;
+			sourceTree = "<group>";
+		};
+		DD3935CF19F25FD3001618EC /* customObjects */ = {
+			isa = PBXGroup;
+			children = (
+				DD3935D919F260BB001618EC /* questionTableViewCell.h */,
+				DD3935DA19F260BB001618EC /* questionTableViewCell.m */,
+				DD3935D019F25FEF001618EC /* resultsTableViewCell.h */,
+				DD3935D119F25FEF001618EC /* resultsTableViewCell.m */,
+				DD3935D619F26081001618EC /* collegeObject.h */,
+				DD3935D719F26081001618EC /* collegeObject.m */,
+			);
+			name = customObjects;
+			sourceTree = "<group>";
+		};
+		DD62857F19F550B400969302 /* imageFiles */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = imageFiles;
+			sourceTree = "<group>";
+		};
+		DDC09F1C1A1CD00B00F2A354 /* XMLParsers */ = {
+			isa = PBXGroup;
+			children = (
+				DDC09F161A1CCA6F00F2A354 /* questionsXMLParser.h */,
+				DDC09F171A1CCA6F00F2A354 /* questionsXMLParser.m */,
+				DDC09F191A1CCC8F00F2A354 /* infoXMLParser.h */,
+				DDC09F1A1A1CCC8F00F2A354 /* infoXMLParser.m */,
+			);
+			name = XMLParsers;
+			sourceTree = "<group>";
+		};
+		DDE22D8D19EA8B9A0071302B = {
+			isa = PBXGroup;
+			children = (
+				DDE22D9819EA8B9B0071302B /* CollegeRankings */,
+				DDE22DB219EA8B9B0071302B /* CollegeRankingsTests */,
+				DDE22D9719EA8B9B0071302B /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		DDE22D9719EA8B9B0071302B /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				DDE22D9619EA8B9B0071302B /* CollegeRankings.app */,
+				DDE22DAF19EA8B9B0071302B /* CollegeRankingsTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		DDE22D9819EA8B9B0071302B /* CollegeRankings */ = {
+			isa = PBXGroup;
+			children = (
+				DDE22D9D19EA8B9B0071302B /* AppDelegate.h */,
+				DDE22D9E19EA8B9B0071302B /* AppDelegate.m */,
+				DDD9812A1A1A45D90057D2A0 /* Main.storyboard */,
+				DD3935AF19F25C03001618EC /* questionsViewController.h */,
+				DD3935B019F25C03001618EC /* questionsViewController.m */,
+				DD6B64D21A34379900649302 /* resultsTableViewController.h */,
+				DD6B64D31A34379900649302 /* resultsTableViewController.m */,
+				DDC09F1D1A1CD84000F2A354 /* userAgreementViewController.h */,
+				DDC09F1E1A1CD84000F2A354 /* userAgreementViewController.m */,
+				DDBBBBA21A2073EC002B67EA /* tutorialViewController.h */,
+				DDBBBBA31A2073EC002B67EA /* tutorialViewController.m */,
+				DDC09F0F1A1CC10700F2A354 /* filtersViewController.h */,
+				DDC09F101A1CC10700F2A354 /* filtersViewController.m */,
+				DD3935BE19F25EB2001618EC /* detailViewController.h */,
+				DD3935BF19F25EB2001618EC /* detailViewController.m */,
+				DD3935BB19F25E75001618EC /* webViewController.h */,
+				DD3935BC19F25E75001618EC /* webViewController.m */,
+				DD3935CF19F25FD3001618EC /* customObjects */,
+				DD3935C119F25F25001618EC /* dataFiles */,
+				DDC09F1C1A1CD00B00F2A354 /* XMLParsers */,
+				DD62857F19F550B400969302 /* imageFiles */,
+				DDE22DA619EA8B9B0071302B /* Images.xcassets */,
+				DDE22DA819EA8B9B0071302B /* LaunchScreen.xib */,
+				DDE22D9919EA8B9B0071302B /* Supporting Files */,
+			);
+			path = CollegeRankings;
+			sourceTree = "<group>";
+		};
+		DDE22D9919EA8B9B0071302B /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				DDE22D9A19EA8B9B0071302B /* Info.plist */,
+				DDE22D9B19EA8B9B0071302B /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		DDE22DB219EA8B9B0071302B /* CollegeRankingsTests */ = {
+			isa = PBXGroup;
+			children = (
+				DDE22DB519EA8B9B0071302B /* CollegeRankingsTests.m */,
+				DDE22DB319EA8B9B0071302B /* Supporting Files */,
+			);
+			path = CollegeRankingsTests;
+			sourceTree = "<group>";
+		};
+		DDE22DB319EA8B9B0071302B /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				DDE22DB419EA8B9B0071302B /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		DDE22D9519EA8B9B0071302B /* CollegeRankings */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = DDE22DB919EA8B9B0071302B /* Build configuration list for PBXNativeTarget "CollegeRankings" */;
+			buildPhases = (
+				DDE22D9219EA8B9B0071302B /* Sources */,
+				DDE22D9319EA8B9B0071302B /* Frameworks */,
+				DDE22D9419EA8B9B0071302B /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = CollegeRankings;
+			productName = CollegeRankings;
+			productReference = DDE22D9619EA8B9B0071302B /* CollegeRankings.app */;
+			productType = "com.apple.product-type.application";
+		};
+		DDE22DAE19EA8B9B0071302B /* CollegeRankingsTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = DDE22DBC19EA8B9B0071302B /* Build configuration list for PBXNativeTarget "CollegeRankingsTests" */;
+			buildPhases = (
+				DDE22DAB19EA8B9B0071302B /* Sources */,
+				DDE22DAC19EA8B9B0071302B /* Frameworks */,
+				DDE22DAD19EA8B9B0071302B /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				DDE22DB119EA8B9B0071302B /* PBXTargetDependency */,
+			);
+			name = CollegeRankingsTests;
+			productName = CollegeRankingsTests;
+			productReference = DDE22DAF19EA8B9B0071302B /* CollegeRankingsTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		DDE22D8E19EA8B9A0071302B /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0600;
+				ORGANIZATIONNAME = "Nick Ladd";
+				TargetAttributes = {
+					DDE22D9519EA8B9B0071302B = {
+						CreatedOnToolsVersion = 6.0.1;
+						DevelopmentTeam = 2RRQN2V8G5;
+					};
+					DDE22DAE19EA8B9B0071302B = {
+						CreatedOnToolsVersion = 6.0.1;
+						TestTargetID = DDE22D9519EA8B9B0071302B;
+					};
+				};
+			};
+			buildConfigurationList = DDE22D9119EA8B9A0071302B /* Build configuration list for PBXProject "CollegeRankings" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = DDE22D8D19EA8B9A0071302B;
+			productRefGroup = DDE22D9719EA8B9B0071302B /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				DDE22D9519EA8B9B0071302B /* CollegeRankings */,
+				DDE22DAE19EA8B9B0071302B /* CollegeRankingsTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		DDE22D9419EA8B9B0071302B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DDC09F131A1CC95100F2A354 /* questions.xml in Resources */,
+				DDE22DAA19EA8B9B0071302B /* LaunchScreen.xib in Resources */,
+				DD3935C819F25F61001618EC /* userAgreement.txt in Resources */,
+				DDC09F151A1CC9F200F2A354 /* information.xml in Resources */,
+				DDD9812B1A1A45D90057D2A0 /* Main.storyboard in Resources */,
+				DDE22DA719EA8B9B0071302B /* Images.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DDE22DAD19EA8B9B0071302B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		DDE22D9219EA8B9B0071302B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DDE22D9F19EA8B9B0071302B /* AppDelegate.m in Sources */,
+				DD3935D219F25FEF001618EC /* resultsTableViewCell.m in Sources */,
+				DDBBBBA41A2073EC002B67EA /* tutorialViewController.m in Sources */,
+				DDC09F181A1CCA6F00F2A354 /* questionsXMLParser.m in Sources */,
+				DD3935BD19F25E75001618EC /* webViewController.m in Sources */,
+				DDC09F1B1A1CCC8F00F2A354 /* infoXMLParser.m in Sources */,
+				DDE22D9C19EA8B9B0071302B /* main.m in Sources */,
+				DD3935C019F25EB2001618EC /* detailViewController.m in Sources */,
+				DD3935B119F25C03001618EC /* questionsViewController.m in Sources */,
+				DDC09F1F1A1CD84100F2A354 /* userAgreementViewController.m in Sources */,
+				DD3935DB19F260BB001618EC /* questionTableViewCell.m in Sources */,
+				DD6B64D41A34379900649302 /* resultsTableViewController.m in Sources */,
+				DDC09F111A1CC10700F2A354 /* filtersViewController.m in Sources */,
+				DD3935D819F26081001618EC /* collegeObject.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DDE22DAB19EA8B9B0071302B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DDE22DB619EA8B9B0071302B /* CollegeRankingsTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		DDE22DB119EA8B9B0071302B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = DDE22D9519EA8B9B0071302B /* CollegeRankings */;
+			targetProxy = DDE22DB019EA8B9B0071302B /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		DDE22DA819EA8B9B0071302B /* LaunchScreen.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				DDE22DA919EA8B9B0071302B /* Base */,
+			);
+			name = LaunchScreen.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		DDE22DB719EA8B9B0071302B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		DDE22DB819EA8B9B0071302B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		DDE22DBA19EA8B9B0071302B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				INFOPLIST_FILE = CollegeRankings/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		DDE22DBB19EA8B9B0071302B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				INFOPLIST_FILE = CollegeRankings/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		DDE22DBD19EA8B9B0071302B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = CollegeRankingsTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/CollegeRankings.app/CollegeRankings";
+			};
+			name = Debug;
+		};
+		DDE22DBE19EA8B9B0071302B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = CollegeRankingsTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/CollegeRankings.app/CollegeRankings";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		DDE22D9119EA8B9A0071302B /* Build configuration list for PBXProject "CollegeRankings" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				DDE22DB719EA8B9B0071302B /* Debug */,
+				DDE22DB819EA8B9B0071302B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		DDE22DB919EA8B9B0071302B /* Build configuration list for PBXNativeTarget "CollegeRankings" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				DDE22DBA19EA8B9B0071302B /* Debug */,
+				DDE22DBB19EA8B9B0071302B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		DDE22DBC19EA8B9B0071302B /* Build configuration list for PBXNativeTarget "CollegeRankingsTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				DDE22DBD19EA8B9B0071302B /* Debug */,
+				DDE22DBE19EA8B9B0071302B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = DDE22D8E19EA8B9A0071302B /* Project object */;
+}
