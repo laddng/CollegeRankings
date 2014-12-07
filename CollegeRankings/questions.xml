@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<questions>
+    
+    <question text="How important is it to you that your classes are taught by full-time professors rather than teaching assistants or associate professors?"></question>
+    <question text="How important is it to you that the school invests heavily in academic instruction?"></question>
+    <question text="How important is it to you that the school invests into campus life and student wellbeing?"></question>
+    <question text="How important is it to you that the school invests into academics, research, and public service?"></question>
+    <question text="How important is it to you that students complete degrees within 4 years?"></question>
+    <question text="How important is it to you that students return to campus each fall?"></question>
+    <question text="How important is it to you that you are surrounded by intelligent students?"></question>
+    <question text="How important is it to you that you have a larger classrom dynamic? (For small classes, put '0')"></question>
+    <question text="How selective would you like your school to be? (For very selective, put '0')"></question>
+    <question text="How important is it to you that your school is "first-choice" school and not a 'back-up' option for applicants?"></question>
+    <question text="How important is it to you that other universities think highly of your school?"></question>
+    
+</questions>
