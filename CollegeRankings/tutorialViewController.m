@@ -19,12 +19,49 @@
     
     [super viewDidLoad];
     
-    self.navigationController.navigationBarHidden = YES;
     
 }
 
-- (IBAction)questionViewDidUnwind:(UIStoryboardSegue *)segue
+- (IBAction) questionViewDidUnwind:(UIStoryboardSegue *)segue
 {
+    
+}
+
+- (IBAction) userAgreementDidUnwind:(UIStoryboardSegue *)segue
+{
+    
+}
+
+- (void) completedTutorial
+{
+    
+    NSString* pathToAgreementFile = [[NSBundle mainBundle] pathForResource:@"userAgreement" ofType:@"txt"];
+    
+    NSData *userAgreementData = [NSData dataWithContentsOfFile:pathToAgreementFile];
+    
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    
+    NSString *documentsDirectory = [paths objectAtIndex:0];
+    
+    documentsDirectory = [documentsDirectory stringByAppendingPathComponent:@"tutorialCompletion"];
+    
+    [[NSFileManager defaultManager] createDirectoryAtPath:documentsDirectory withIntermediateDirectories:YES attributes:nil error:nil];
+    
+    NSString *filePath = [NSString stringWithFormat:@"%@/%@", documentsDirectory, @"tutorialCompletion"];
+    
+    [userAgreementData writeToFile:filePath atomically:YES];
+    
+}
+
+- (void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    
+    if([[segue identifier] isEqualToString:@"questionsVC"])
+    {
+        
+        [self completedTutorial];
+        
+    }
     
 }
 

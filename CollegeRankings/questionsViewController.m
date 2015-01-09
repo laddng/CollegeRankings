@@ -52,7 +52,7 @@
     _progressText.text = [NSString stringWithFormat:@"You have %i points left.", (int) _valueRemaining];
     
     _clearButton.hidden = YES;
-    
+
 }
 
 -(void) loadSurveyQuestions
@@ -296,10 +296,8 @@
     
     if([[segue identifier] isEqualToString:@"showResults"])
     {
-        
-        UINavigationController *nav = segue.destinationViewController;
-        
-        resultsTableViewController *resultsViewControllerSegue = (resultsTableViewController *) nav.topViewController;
+                
+        resultsTableViewController *resultsViewControllerSegue = segue.destinationViewController;
         
         NSArray *input_send = [[NSArray alloc] initWithArray:self.surveyInput];
 

@@ -14,39 +14,13 @@
 
 @implementation userAgreementViewController
 
-
-
 - (void)viewDidLoad
 {
     
     [super viewDidLoad];
-
-    [self checkAgreementFile];
-    
+        
     [self loadAgreementText];
-        
-}
 
-- (void) checkAgreementFile
-{
-    
-    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-    
-    NSString *documentsDirectory = [paths objectAtIndex:0];
-    
-    documentsDirectory = [documentsDirectory stringByAppendingPathComponent:@"UserAgreement"];
-    
-    NSString *filePath = [NSString stringWithFormat:@"%@/%@", documentsDirectory, @"userAgreement"];
-    
-    NSFileManager *fileManager = [[NSFileManager alloc] init];
-    
-    if([fileManager fileExistsAtPath:filePath])
-    {
-        
-        [self performSegueWithIdentifier:@"tutorialVC" sender:self];
-        
-    }
-    
 }
 
 - (void) loadAgreementText
@@ -57,17 +31,14 @@
     NSString *textFromFile = [[NSString alloc] initWithContentsOfFile:pathToFile encoding:NSUTF8StringEncoding error:nil];
     
     _agreementText.text = textFromFile;
+    
+    _agreementText.scrollsToTop = YES;
+    
+    [_agreementText setContentOffset:CGPointMake(1.0, 0.0) animated:NO];
 
 }
 
-- (IBAction) acceptedAgreement
-{
-    
-    [self createAgreementFile];
-    
-}
-
-- (void) createAgreementFile
+- (void) acceptedAgreement
 {
     
     NSString* pathToAgreementFile = [[NSBundle mainBundle] pathForResource:@"userAgreement" ofType:@"txt"];
@@ -78,7 +49,7 @@
     
     NSString *documentsDirectory = [paths objectAtIndex:0];
     
-    documentsDirectory = [documentsDirectory stringByAppendingPathComponent:@"UserAgreement"];
+    documentsDirectory = [documentsDirectory stringByAppendingPathComponent:@"userAgreement"];
     
     [[NSFileManager defaultManager] createDirectoryAtPath:documentsDirectory withIntermediateDirectories:YES attributes:nil error:nil];
     
@@ -86,16 +57,16 @@
     
     [userAgreementData writeToFile:filePath atomically:YES];
     
-    [self performSegueWithIdentifier:@"tutorialVC" sender:self];
-    
 }
 
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+- (void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     
-    if ([segue.identifier isEqualToString:@"tutorialVC"])
+    if([[segue identifier] isEqualToString:@"tutorialVC"])
     {
-                
+        
+        [self acceptedAgreement];
+        
     }
     
 }
