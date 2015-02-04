@@ -5,7 +5,6 @@
 //  Created by Nick Ladd on 11/19/14.
 //  Copyright (c) 2014 Nick Ladd. All rights reserved.
 //
-
 #import "userAgreementViewController.h"
 
 @interface userAgreementViewController ()
@@ -16,9 +15,9 @@
 
 - (void)viewDidLoad
 {
-    
+
     [super viewDidLoad];
-        
+
     [self loadAgreementText];
 
 }
@@ -62,11 +61,11 @@
 - (void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     
-    if([[segue identifier] isEqualToString:@"tutorialVC"])
+    if ([[segue identifier] isEqualToString:@"unwindUserAgreement"])
     {
         
         [self acceptedAgreement];
-        
+
     }
     
 }

@@ -8,9 +8,11 @@
 
 #import <UIKit/UIKit.h>
 
-@interface resultsTableViewController : UITableViewController <UISearchBarDelegate, UISearchDisplayDelegate>
+@interface resultsTableViewController : UITableViewController <UISearchBarDelegate>
 
 @property (weak, nonatomic) IBOutlet UISearchBar *searchBar;
+
+@property (strong, nonatomic) UISearchController *controller;
 
 @property NSArray *surveyInput;
 

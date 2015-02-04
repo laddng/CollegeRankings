@@ -18,4 +18,6 @@
 
 @property (weak, nonatomic) IBOutlet UIButton *clearButton;
 
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *finishButton;
+
 @end

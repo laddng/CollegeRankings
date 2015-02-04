@@ -31,6 +31,10 @@
     
     [super viewDidLoad];
     
+    self.controller = [[UISearchController alloc] initWithSearchResultsController:nil];
+    
+    self.controller.searchBar.delegate = self;
+    
     self.numOfResults = 10;
     
     self.filteredState = @"ALL";
@@ -53,17 +57,18 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     
-    if (tableView == self.searchDisplayController.searchResultsTableView)
+    if (tableView == self.tableView)
     {
-        
-        return [_searchResults count];
-        
-    }
-    
-    else {
         
         return self.numOfResults;
         
+    }
+    
+    else
+    {
+        
+        return [_searchResults count];
+
     }
     
 }
@@ -124,7 +129,7 @@
     
     resultsTableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:@"school"];
     
-    if (tableView == self.searchDisplayController.searchResultsTableView)
+    if (!(tableView == self.tableView))
     {
         
         cell.uniName.text = [[_searchResults objectAtIndex:indexPath.row] name];
@@ -134,7 +139,7 @@
         cell.uniRank.text = [NSString stringWithFormat: @"%i", [[_searchResults objectAtIndex:indexPath.row] ranking]];
         
         return cell;
-        
+
     }
     
     else if([_filteredState isEqualToString:@"ALL"] && [_filteredType isEqualToString:@"ALL"])
@@ -415,6 +420,7 @@
         
     };
     
+    // Problem here in sorting keys
     NSArray *orderedKeys = [rankingsListing keysSortedByValueUsingComparator:cmp];
     
     NSArray *items;
@@ -466,12 +472,10 @@
     
 }
 
--(BOOL) searchDisplayController:(UISearchDisplayController *)controller shouldReloadTableForSearchString:(NSString *)searchString
+- (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText
 {
     
-    [self filterContentForSearchText:searchString scope:[[self.searchDisplayController.searchBar scopeButtonTitles] objectAtIndex:[self.searchDisplayController.searchBar selectedScopeButtonIndex]]];
-    
-    return YES;
+    [self filterContentForSearchText:searchText scope:nil];
     
 }
 
@@ -485,10 +489,10 @@
         
         NSIndexPath *myIndexPath = [self.tableView indexPathForSelectedRow];
         
-        if (self.searchDisplayController.active)
+        if (self.controller.active)
         {
             
-            myIndexPath = [self.searchDisplayController.searchResultsTableView indexPathForSelectedRow];
+            //myIndexPath = [self.controller.searchResultsController indexPathForSelectedRow];
             
             detailView.collegeInfo = [_searchResults objectAtIndex:myIndexPath.row];
             

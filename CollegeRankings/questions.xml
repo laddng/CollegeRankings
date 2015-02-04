@@ -10,7 +10,7 @@
     <question text="How important is it to you that you are surrounded by intelligent students?"></question>
     <question text="How important is it to you that you have a larger classrom dynamic? (For small classes, put '0')"></question>
     <question text="How selective would you like your school to be? (For very selective, put '0')"></question>
-    <question text="How important is it to you that your school is "first-choice" school and not a 'back-up' option for applicants?"></question>
+    <question text="How important is it to you that your school is 'first-choice' school and not a 'back-up' option for applicants?"></question>
     <question text="How important is it to you that other universities think highly of your school?"></question>
     
 </questions>

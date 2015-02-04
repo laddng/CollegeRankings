@@ -15,7 +15,14 @@
 		DD3935D819F26081001618EC /* collegeObject.m in Sources */ = {isa = PBXBuildFile; fileRef = DD3935D719F26081001618EC /* collegeObject.m */; };
 		DD3935DB19F260BB001618EC /* questionTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DD3935DA19F260BB001618EC /* questionTableViewCell.m */; };
 		DD6B64D41A34379900649302 /* resultsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DD6B64D31A34379900649302 /* resultsTableViewController.m */; };
-		DDBBBBA41A2073EC002B67EA /* tutorialViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DDBBBBA31A2073EC002B67EA /* tutorialViewController.m */; };
+		DD87253C1A7AD6E2008589A2 /* initialViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DD87253B1A7AD6E2008589A2 /* initialViewController.m */; };
+		DD8725451A7AE302008589A2 /* tutorialContentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DD8725441A7AE302008589A2 /* tutorialContentViewController.m */; };
+		DD8725481A7B11BE008589A2 /* tutorialRootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DD8725471A7B11BE008589A2 /* tutorialRootViewController.m */; };
+		DD87254C1A7B3AFC008589A2 /* iphone.pdf in Resources */ = {isa = PBXBuildFile; fileRef = DD87254B1A7B3AFC008589A2 /* iphone.pdf */; };
+		DD87254F1A7BD9DC008589A2 /* tutorialIcon@44px.png in Resources */ = {isa = PBXBuildFile; fileRef = DD87254D1A7BD9DC008589A2 /* tutorialIcon@44px.png */; };
+		DD8725501A7BD9DC008589A2 /* tutorialIcon@66px.png in Resources */ = {isa = PBXBuildFile; fileRef = DD87254E1A7BD9DC008589A2 /* tutorialIcon@66px.png */; };
+		DD8725521A7BDC76008589A2 /* tutorialIcon@22px.png in Resources */ = {isa = PBXBuildFile; fileRef = DD8725511A7BDC76008589A2 /* tutorialIcon@22px.png */; };
+		DD8725551A7BDF61008589A2 /* tutorialEndViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DD8725541A7BDF61008589A2 /* tutorialEndViewController.m */; };
 		DDC09F111A1CC10700F2A354 /* filtersViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DDC09F101A1CC10700F2A354 /* filtersViewController.m */; };
 		DDC09F131A1CC95100F2A354 /* questions.xml in Resources */ = {isa = PBXBuildFile; fileRef = DDC09F121A1CC95100F2A354 /* questions.xml */; };
 		DDC09F151A1CC9F200F2A354 /* information.xml in Resources */ = {isa = PBXBuildFile; fileRef = DDC09F141A1CC9F200F2A354 /* information.xml */; };
@@ -57,8 +64,18 @@
 		DD3935DA19F260BB001618EC /* questionTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = questionTableViewCell.m; sourceTree = "<group>"; };
 		DD6B64D21A34379900649302 /* resultsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = resultsTableViewController.h; sourceTree = "<group>"; };
 		DD6B64D31A34379900649302 /* resultsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = resultsTableViewController.m; sourceTree = "<group>"; };
-		DDBBBBA21A2073EC002B67EA /* tutorialViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = tutorialViewController.h; sourceTree = "<group>"; };
-		DDBBBBA31A2073EC002B67EA /* tutorialViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = tutorialViewController.m; sourceTree = "<group>"; };
+		DD87253A1A7AD6E2008589A2 /* initialViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = initialViewController.h; sourceTree = "<group>"; };
+		DD87253B1A7AD6E2008589A2 /* initialViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = initialViewController.m; sourceTree = "<group>"; };
+		DD8725431A7AE302008589A2 /* tutorialContentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = tutorialContentViewController.h; sourceTree = "<group>"; };
+		DD8725441A7AE302008589A2 /* tutorialContentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = tutorialContentViewController.m; sourceTree = "<group>"; };
+		DD8725461A7B11BE008589A2 /* tutorialRootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = tutorialRootViewController.h; sourceTree = "<group>"; };
+		DD8725471A7B11BE008589A2 /* tutorialRootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = tutorialRootViewController.m; sourceTree = "<group>"; };
+		DD87254B1A7B3AFC008589A2 /* iphone.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = iphone.pdf; sourceTree = "<group>"; };
+		DD87254D1A7BD9DC008589A2 /* tutorialIcon@44px.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tutorialIcon@44px.png"; sourceTree = "<group>"; };
+		DD87254E1A7BD9DC008589A2 /* tutorialIcon@66px.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tutorialIcon@66px.png"; sourceTree = "<group>"; };
+		DD8725511A7BDC76008589A2 /* tutorialIcon@22px.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tutorialIcon@22px.png"; sourceTree = "<group>"; };
+		DD8725531A7BDF61008589A2 /* tutorialEndViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = tutorialEndViewController.h; sourceTree = "<group>"; };
+		DD8725541A7BDF61008589A2 /* tutorialEndViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = tutorialEndViewController.m; sourceTree = "<group>"; };
 		DDC09F0F1A1CC10700F2A354 /* filtersViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = filtersViewController.h; sourceTree = "<group>"; };
 		DDC09F101A1CC10700F2A354 /* filtersViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = filtersViewController.m; sourceTree = "<group>"; };
 		DDC09F121A1CC95100F2A354 /* questions.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = questions.xml; sourceTree = "<group>"; };
@@ -127,6 +144,10 @@
 		DD62857F19F550B400969302 /* imageFiles */ = {
 			isa = PBXGroup;
 			children = (
+				DD8725511A7BDC76008589A2 /* tutorialIcon@22px.png */,
+				DD87254D1A7BD9DC008589A2 /* tutorialIcon@44px.png */,
+				DD87254E1A7BD9DC008589A2 /* tutorialIcon@66px.png */,
+				DD87254B1A7B3AFC008589A2 /* iphone.pdf */,
 			);
 			name = imageFiles;
 			sourceTree = "<group>";
@@ -166,14 +187,20 @@
 				DDE22D9D19EA8B9B0071302B /* AppDelegate.h */,
 				DDE22D9E19EA8B9B0071302B /* AppDelegate.m */,
 				DDD9812A1A1A45D90057D2A0 /* Main.storyboard */,
+				DD87253A1A7AD6E2008589A2 /* initialViewController.h */,
+				DD87253B1A7AD6E2008589A2 /* initialViewController.m */,
+				DD8725461A7B11BE008589A2 /* tutorialRootViewController.h */,
+				DD8725471A7B11BE008589A2 /* tutorialRootViewController.m */,
+				DD8725431A7AE302008589A2 /* tutorialContentViewController.h */,
+				DD8725441A7AE302008589A2 /* tutorialContentViewController.m */,
+				DD8725531A7BDF61008589A2 /* tutorialEndViewController.h */,
+				DD8725541A7BDF61008589A2 /* tutorialEndViewController.m */,
 				DD3935AF19F25C03001618EC /* questionsViewController.h */,
 				DD3935B019F25C03001618EC /* questionsViewController.m */,
 				DD6B64D21A34379900649302 /* resultsTableViewController.h */,
 				DD6B64D31A34379900649302 /* resultsTableViewController.m */,
 				DDC09F1D1A1CD84000F2A354 /* userAgreementViewController.h */,
 				DDC09F1E1A1CD84000F2A354 /* userAgreementViewController.m */,
-				DDBBBBA21A2073EC002B67EA /* tutorialViewController.h */,
-				DDBBBBA31A2073EC002B67EA /* tutorialViewController.m */,
 				DDC09F0F1A1CC10700F2A354 /* filtersViewController.h */,
 				DDC09F101A1CC10700F2A354 /* filtersViewController.m */,
 				DD3935BE19F25EB2001618EC /* detailViewController.h */,
@@ -303,6 +330,10 @@
 				DD3935C819F25F61001618EC /* userAgreement.txt in Resources */,
 				DDC09F151A1CC9F200F2A354 /* information.xml in Resources */,
 				DDD9812B1A1A45D90057D2A0 /* Main.storyboard in Resources */,
+				DD87254F1A7BD9DC008589A2 /* tutorialIcon@44px.png in Resources */,
+				DD87254C1A7B3AFC008589A2 /* iphone.pdf in Resources */,
+				DD8725521A7BDC76008589A2 /* tutorialIcon@22px.png in Resources */,
+				DD8725501A7BD9DC008589A2 /* tutorialIcon@66px.png in Resources */,
 				DDE22DA719EA8B9B0071302B /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -323,17 +354,20 @@
 			files = (
 				DDE22D9F19EA8B9B0071302B /* AppDelegate.m in Sources */,
 				DD3935D219F25FEF001618EC /* resultsTableViewCell.m in Sources */,
-				DDBBBBA41A2073EC002B67EA /* tutorialViewController.m in Sources */,
 				DDC09F181A1CCA6F00F2A354 /* questionsXMLParser.m in Sources */,
 				DD3935BD19F25E75001618EC /* webViewController.m in Sources */,
 				DDC09F1B1A1CCC8F00F2A354 /* infoXMLParser.m in Sources */,
 				DDE22D9C19EA8B9B0071302B /* main.m in Sources */,
+				DD87253C1A7AD6E2008589A2 /* initialViewController.m in Sources */,
+				DD8725451A7AE302008589A2 /* tutorialContentViewController.m in Sources */,
 				DD3935C019F25EB2001618EC /* detailViewController.m in Sources */,
 				DD3935B119F25C03001618EC /* questionsViewController.m in Sources */,
 				DDC09F1F1A1CD84100F2A354 /* userAgreementViewController.m in Sources */,
 				DD3935DB19F260BB001618EC /* questionTableViewCell.m in Sources */,
 				DD6B64D41A34379900649302 /* resultsTableViewController.m in Sources */,
 				DDC09F111A1CC10700F2A354 /* filtersViewController.m in Sources */,
+				DD8725481A7B11BE008589A2 /* tutorialRootViewController.m in Sources */,
+				DD8725551A7BDF61008589A2 /* tutorialEndViewController.m in Sources */,
 				DD3935D819F26081001618EC /* collegeObject.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -452,10 +486,12 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = CollegeRankings/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
 		};
@@ -465,10 +501,12 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = CollegeRankings/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
 		};

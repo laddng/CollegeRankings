@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <information>
 
-    <info text="This is the question's help 1"></info>
-    <info text="This is the question's help 2"></info>
-    <info text="This is the question's help 3"></info>
-    <info text="This is the question's help 4"></info>
-    <info text="This is the question's help 5"></info>
-    <info text="This is the question's help 6"></info>
-    <info text="This is the question's help 7"></info>
-    <info text="This is the question's help 8"></info>
-    <info text="This is the question's help 9"></info>
-    <info text="This is the question's help 10"></info>
-    <info text="This is the question's help 11"></info>
+    <info text="This item uses the percentage of a school’s (non-medical school) faculty who are full-time employees."></info>
+    <info text="This item uses the percentage of the school’s core expenses that covers general academic instruction."></info>
+    <info text="This item uses the percentage of the school’s core expenses that covers activities whose primary purpose is to contribute to students emotional and physical well - being and to their intellectual, cultural, and social development outside the formal classroom."></info>
+    <info text="This item uses the percentage of the school’s core expenses that covers things like libraries, tutoring services, computer labs, course development and academic administration."></info>
+    <info text="This item uses the percentage of full-time, freshmen who graduated from the same school within six years of starting."></info>
+    <info text="This item uses the percentage of full-time, first-year students from the prior fall who re-enrolled at the same school (either full or part-time) the following fall."></info>
+    <info text="This item uses the average SAT/ACT scores of new (first-time), freshmen (degree/certificate-seeking undergraduate students) at schools that required SAT/ACT scores for admission."></info>
+    <info text="This item divides the total calculated number of full-time, undergraduate students by the total calculated number of full-time faculty."></info>
+    <info text="This item uses the percentage of students who applied to the school who actually got admitted."></info>
+    <info text="This item uses the percentage of students who were admitted to the school who went on to enroll at that school."></info>
+    <info text="This item counts the number of times a school is listed as a member of custom comparison group (peer) by all the other schools in the most recent federal higher education data base (IPEDS)."></info>
 
 </information>

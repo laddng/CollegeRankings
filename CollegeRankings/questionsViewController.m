@@ -162,9 +162,9 @@
     questionTableViewCell *cellToRecord = (questionTableViewCell*)[self.tableView cellForRowAtIndexPath:indexOfTextField];
     
     NSString *inputValue = cellToRecord.surveyInput.text;
-    
+
     int value = [inputValue intValue];
-    
+
     if(![inputValue isEqual: nil])
     {
         
