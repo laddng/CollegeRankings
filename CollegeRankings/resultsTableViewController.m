@@ -62,7 +62,11 @@
     
     _filters.minEnrollmentFilter = 0;
     
+    _filters.setMinEnrollmentFilter = 0;
+    
     _filters.maxEnrollmentFilter = [self getMaxEnrollment];
+    
+    _filters.setMaxEnrollmentFilter = [self getMaxEnrollment];
     
     self.numOfResults = 10;
     
@@ -127,11 +131,16 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     
-    if (self.searchController.active)
+    if (self.searchController.active && self.searchResults.count != 0)
     {
         
         return [self.searchResults count];
         
+    }
+    
+    else if ((self.searchResults.count == 0 && self.searchController.active) || (_filteredArray.count == 0 && _filters.isFiltered))
+    {
+        return 1;
     }
     
     return self.numOfResults;
@@ -187,7 +196,15 @@
     
     resultsTableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:@"school"];
     
-    if (self.searchController.active)
+    if ((self.searchResults.count == 0 && self.searchController.active) || (_filteredArray.count == 0 && _filters.isFiltered))
+    {
+        
+        UITableViewCell *cellNoResults = [self.tableView dequeueReusableCellWithIdentifier:@"noResults"];
+        
+        return cellNoResults;
+    }
+    
+    else if (self.searchController.active)
     {
         
         cell.uniName.text = [[_searchResults objectAtIndex:indexPath.row] name];
@@ -317,7 +334,7 @@
         
     }
     
-    else if ([collegeToBeFiltered undergradFullTimeEnrollment] < (int)[_filters minEnrollmentFilter])
+    else if ([collegeToBeFiltered undergradFullTimeEnrollment] < (int)[_filters setMinEnrollmentFilter])
     {
         
         return NO;

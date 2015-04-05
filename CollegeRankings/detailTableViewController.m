@@ -69,6 +69,13 @@
     
     _rankingText.text = [NSString stringWithFormat:@"This university was #%i on your list", (int)_collegeInfo.ranking];
     
+    if ([_collegeInfo.url isEqualToString:@"0"])
+    {
+        
+        _uniURL.hidden = YES;
+        
+    }
+    
     [_uniURL setTitle:_collegeInfo.url forState:UIControlStateNormal];
     
 }

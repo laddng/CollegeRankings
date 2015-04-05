@@ -14,6 +14,8 @@
 
 @property (weak, nonatomic) IBOutlet NMRangeSlider *standardSlider;
 
+@property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
+
 @property (weak, nonatomic) IBOutlet UIPickerView *stateSelector;
 
 @property (weak, nonatomic) IBOutlet UISegmentedControl *typeSelector;

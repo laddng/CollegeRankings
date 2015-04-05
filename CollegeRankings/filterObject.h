@@ -22,6 +22,8 @@
 
 @property int minEnrollmentFilter;
 
+@property int setMinEnrollmentFilter;
+
 @property int maxEnrollmentFilter;
 
 @property int setMaxEnrollmentFilter;

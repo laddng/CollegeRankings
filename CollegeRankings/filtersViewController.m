@@ -31,6 +31,7 @@
     [self loadSelectedType];
 
     [self setupMaxTuition];
+
 }
 
 - (void) configureStandardSlider
@@ -38,16 +39,27 @@
     
     self.standardSlider.stepValue = 0.025;
 
-    self.standardSlider.lowerValue = _filtersToBeApplied.minEnrollmentFilter;
+    self.standardSlider.lowerValue = ((float)_filtersToBeApplied.setMinEnrollmentFilter/(float)_filtersToBeApplied.maxEnrollmentFilter);
+
+    self.standardSlider.upperValue = ((float)_filtersToBeApplied.setMaxEnrollmentFilter/(float)_filtersToBeApplied.maxEnrollmentFilter);
+
+    NSNumberFormatter *format = [NSNumberFormatter new];
     
-    self.standardSlider.upperValue = _filtersToBeApplied.maxEnrollmentFilter;
+    [format setNumberStyle:NSNumberFormatterDecimalStyle];
+    
+    NSString *formattedMax = [format stringFromNumber:[NSNumber numberWithInteger:_filtersToBeApplied.setMaxEnrollmentFilter]];
+    
+    NSString *formattedMin = [format stringFromNumber:[NSNumber numberWithInteger:_filtersToBeApplied.setMinEnrollmentFilter]];
+    
+    _enrollmentCounter.text = [NSString stringWithFormat:@"%@ - %@ students", formattedMin, formattedMax];
+
     
 }
 
 - (IBAction)changedEnrollmentValue:(id)sender
 {
 
-    _filtersToBeApplied.minEnrollmentFilter = self.standardSlider.lowerValue * _filtersToBeApplied.maxEnrollmentFilter;
+    _filtersToBeApplied.setMinEnrollmentFilter = self.standardSlider.lowerValue * _filtersToBeApplied.maxEnrollmentFilter;
     
     _filtersToBeApplied.setMaxEnrollmentFilter = self.standardSlider.upperValue * _filtersToBeApplied.maxEnrollmentFilter;
 
@@ -57,7 +69,7 @@
     
     NSString *formattedMax = [format stringFromNumber:[NSNumber numberWithInteger:_filtersToBeApplied.setMaxEnrollmentFilter]];
     
-    NSString *formattedMin = [format stringFromNumber:[NSNumber numberWithInteger:_filtersToBeApplied.minEnrollmentFilter]];
+    NSString *formattedMin = [format stringFromNumber:[NSNumber numberWithInteger:_filtersToBeApplied.setMinEnrollmentFilter]];
     
     _enrollmentCounter.text = [NSString stringWithFormat:@"%@ - %@ students", formattedMin, formattedMax];
     
@@ -136,6 +148,7 @@
     if (_filtersToBeApplied.setMaxTuitionFilter < _filtersToBeApplied.maxTuitionFilter)
     {
         float value = (_filtersToBeApplied.setMaxTuitionFilter *1.0)/(_filtersToBeApplied.maxTuitionFilter*1.0);
+        
         _maxTuitionSlider.value = value;
         
     }
