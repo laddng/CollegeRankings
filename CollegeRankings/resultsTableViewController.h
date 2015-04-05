@@ -7,18 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "filterObject.h"
 
-@interface resultsTableViewController : UITableViewController <UISearchBarDelegate>
+@interface resultsTableViewController : UITableViewController
 
-@property (weak, nonatomic) IBOutlet UISearchBar *searchBar;
+@property (strong, nonatomic) NSMutableArray *surveyInputValues;
 
-@property (strong, nonatomic) UISearchController *controller;
-
-@property NSArray *surveyInput;
-
-@property NSString *filteredState;
-
-@property NSString *filteredType;
+@property filterObject *filters;
 
 @property (weak, nonatomic) IBOutlet UIButton *showMoreResults;
 

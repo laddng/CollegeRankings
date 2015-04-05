@@ -6,7 +6,7 @@
 //  Copyright (c) 2015 Nick Ladd. All rights reserved.
 //
 #import "initialViewController.h"
-#import "questionsViewController.h"
+#import "questionsTableViewController.h"
 #import "tutorialRootViewController.h"
 #import "userAgreementViewController.h"
 
@@ -49,7 +49,7 @@
     else
     {
 
-        questionsViewController *questionsScreen = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"questionsViewController"];
+        questionsTableViewController *questionsScreen = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"questionsViewController"];
         
         [self.navigationController presentViewController:questionsScreen animated:NO completion:nil];
         

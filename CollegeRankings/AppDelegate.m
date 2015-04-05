@@ -27,19 +27,4 @@
 
 }
 
-- (BOOL)application:(UIApplication *)application willFinishLaunchingWithOptions:(NSDictionary *)launchOptions
-{
-
-    UIStoryboard *storyboard = self.window.rootViewController.storyboard;
-
-    UIViewController *rootViewController = [storyboard instantiateViewControllerWithIdentifier:@"initialViewController"];
-
-    self.window.rootViewController = rootViewController;
-
-    [self.window makeKeyAndVisible];
-
-    return YES;
-
-}
-
 @end

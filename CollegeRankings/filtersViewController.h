@@ -7,15 +7,25 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "filterObject.h"
+#import "NMRangeSlider.h"
 
 @interface filtersViewController : UIViewController
+
+@property (weak, nonatomic) IBOutlet NMRangeSlider *standardSlider;
 
 @property (weak, nonatomic) IBOutlet UIPickerView *stateSelector;
 
 @property (weak, nonatomic) IBOutlet UISegmentedControl *typeSelector;
 
-@property NSString *filteredByState;
+@property (weak, nonatomic) IBOutlet UISlider *enrollmentSlider;
 
-@property NSString *filteredByType;
+@property (weak, nonatomic) IBOutlet UILabel *enrollmentCounter;
+
+@property (weak, nonatomic) IBOutlet UISlider *maxTuitionSlider;
+
+@property (weak, nonatomic) IBOutlet UILabel *maxTuitionCounter;
+
+@property filterObject *filtersToBeApplied;
 
 @end

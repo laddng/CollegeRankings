@@ -10,6 +10,8 @@
 
 @interface collegeObject : NSObject
 
+@property int id;
+
 @property NSString *name;
 
 @property NSString *city;
@@ -18,12 +20,18 @@
 
 @property NSString *url;
 
-@property NSString *ins;
+@property int ins;
 
-@property NSString *out;
+@property int out;
 
 @property NSString *collegeType;
 
-@property int ranking;
+@property int undergradEnrollment;
+
+@property int undergradFullTimeEnrollment;
+
+@property int undergradPartTimeEnrollment;
+
+@property float ranking;
 
 @end

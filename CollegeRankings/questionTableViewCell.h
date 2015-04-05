@@ -12,6 +12,6 @@
 
 @property (weak, nonatomic) IBOutlet UITextView *surveyQuestion;
 
-@property (weak, nonatomic) IBOutlet UITextField *surveyInput;
+@property (weak, nonatomic) IBOutlet UISlider *sliderMeter;
 
 @end

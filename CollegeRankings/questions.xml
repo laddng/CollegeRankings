@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <questions>
     
-    <question text="How important is it to you that your classes are taught by full-time professors rather than teaching assistants or associate professors?"></question>
-    <question text="How important is it to you that the school invests heavily in academic instruction?"></question>
-    <question text="How important is it to you that the school invests into campus life and student wellbeing?"></question>
-    <question text="How important is it to you that the school invests into academics, research, and public service?"></question>
-    <question text="How important is it to you that students complete degrees within 4 years?"></question>
-    <question text="How important is it to you that students return to campus each fall?"></question>
-    <question text="How important is it to you that you are surrounded by intelligent students?"></question>
-    <question text="How important is it to you that you have a larger classrom dynamic? (For small classes, put '0')"></question>
-    <question text="How selective would you like your school to be? (For very selective, put '0')"></question>
-    <question text="How important is it to you that your school is 'first-choice' school and not a 'back-up' option for applicants?"></question>
-    <question text="How important is it to you that other universities think highly of your school?"></question>
+    <question text="classes are taught by full-time professors?"></question>
+    <question text="the quality of academic instruction is important to the school?"></question>
+    <question text="non-academic support services for the students (for example: mental health counseling centers, student health clinics, career planning, etc.) are important to the school?"></question>
+    <question text="academic support services for the students (for example:  tutoring services, computer labs, internships, etc.) are important to the school?"></question>
+    <question text="students graduate within 4- 6 years?"></question>
+    <question text="most freshmen return to the campus the following year?"></question>
+    <question text="the students have high SAT/ACT test scores?"></question>
+    <question text="there are a small number of students per faculty (which usually means there are mostly smaller classes)?"></question>
+    <question text="the school is highly selective when accepting applicants?"></question>
+    <question text="the students who are admitted to the school really want to go to it – it is not a backup choice?"></question>
+    <question text="the school has a strong overall reputation?"></question>
     
 </questions>

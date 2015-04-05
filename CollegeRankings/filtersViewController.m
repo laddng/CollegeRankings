@@ -21,7 +21,50 @@
 
 - (void)viewDidLoad
 {
+
     [super viewDidLoad];
+    
+    [self configureStandardSlider];
+    
+    [self setupStates];
+
+    [self loadSelectedType];
+
+    [self setupMaxTuition];
+}
+
+- (void) configureStandardSlider
+{
+    
+    self.standardSlider.stepValue = 0.025;
+
+    self.standardSlider.lowerValue = _filtersToBeApplied.minEnrollmentFilter;
+    
+    self.standardSlider.upperValue = _filtersToBeApplied.maxEnrollmentFilter;
+    
+}
+
+- (IBAction)changedEnrollmentValue:(id)sender
+{
+
+    _filtersToBeApplied.minEnrollmentFilter = self.standardSlider.lowerValue * _filtersToBeApplied.maxEnrollmentFilter;
+    
+    _filtersToBeApplied.setMaxEnrollmentFilter = self.standardSlider.upperValue * _filtersToBeApplied.maxEnrollmentFilter;
+
+    NSNumberFormatter *format = [NSNumberFormatter new];
+    
+    [format setNumberStyle:NSNumberFormatterDecimalStyle];
+    
+    NSString *formattedMax = [format stringFromNumber:[NSNumber numberWithInteger:_filtersToBeApplied.setMaxEnrollmentFilter]];
+    
+    NSString *formattedMin = [format stringFromNumber:[NSNumber numberWithInteger:_filtersToBeApplied.minEnrollmentFilter]];
+    
+    _enrollmentCounter.text = [NSString stringWithFormat:@"%@ - %@ students", formattedMin, formattedMax];
+    
+}
+
+- (void) setupStates
+{
     
     _states = [[NSArray alloc] init];
     
@@ -29,12 +72,105 @@
     
     _stateAbbreviations = @[@"ALL", @"AL", @"AK", @"AZ", @"AR", @"CA", @"CO", @"CT", @"DE", @"FL", @"GA", @"HI", @"ID", @"IL", @"IN", @"IA", @"KS", @"KY", @"LA", @"ME", @"MD", @"MA", @"MI", @"MN", @"MS", @"MO", @"MT", @"NE", @"NV", @"NH", @"NJ", @"NM", @"NY", @"NC", @"ND", @"OH", @"OK", @"OR", @"PA", @"RI", @"SC", @"SD", @"TN", @"TX", @"UT", @"VT", @"VA", @"WA", @"WV", @"WI", @"WY"];
     
-    int index = (int)[_stateAbbreviations indexOfObject:_filteredByState];
+    int index = (int)[_stateAbbreviations indexOfObject:_filtersToBeApplied.filteredState];
     
     [_stateSelector selectRow:index inComponent:0 animated:YES];
     
-    [self loadSelectedType];
+}
 
+- (void) loadSelectedType
+{
+    
+    if ([_filtersToBeApplied.filteredType isEqualToString:@"ALL"])
+    {
+        
+        _typeSelector.selectedSegmentIndex = 0;
+        
+    }
+    
+    else if ([_filtersToBeApplied.filteredType isEqualToString:@"Private"])
+    {
+        
+        _typeSelector.selectedSegmentIndex = 1;
+        
+    }
+    
+    else if ([_filtersToBeApplied.filteredType isEqualToString:@"Public"])
+    {
+
+        _typeSelector.selectedSegmentIndex = 2;
+        
+    }
+    
+}
+
+- (IBAction)changeType:(id)sender
+{
+    
+    if(_typeSelector.selectedSegmentIndex == 2)
+    {
+        
+        _filtersToBeApplied.filteredType = @"Public";
+        
+    }
+    
+    else if (_typeSelector.selectedSegmentIndex == 1)
+    {
+        
+        _filtersToBeApplied.filteredType = @"Private";
+        
+    }
+    
+    else
+    {
+        
+        _filtersToBeApplied.filteredType = @"ALL";
+        
+    }
+    
+}
+
+- (void) setupMaxTuition
+{
+    
+    if (_filtersToBeApplied.setMaxTuitionFilter < _filtersToBeApplied.maxTuitionFilter)
+    {
+        float value = (_filtersToBeApplied.setMaxTuitionFilter *1.0)/(_filtersToBeApplied.maxTuitionFilter*1.0);
+        _maxTuitionSlider.value = value;
+        
+    }
+    
+    else
+    {
+        
+        _maxTuitionSlider.value = 1;
+        
+    }
+    
+    
+    NSNumberFormatter *format = [NSNumberFormatter new];
+    
+    [format setNumberStyle:NSNumberFormatterDecimalStyle];
+    
+    NSString *formatted = [format stringFromNumber:[NSNumber numberWithInteger:_filtersToBeApplied.setMaxTuitionFilter]];
+    
+    _maxTuitionCounter.text = [NSString stringWithFormat:@"$%@", formatted];
+    
+}
+
+- (IBAction) changedValueOnMaxTuition
+{
+    
+    _filtersToBeApplied.setMaxTuitionFilter = _filtersToBeApplied.maxTuitionFilter * _maxTuitionSlider.value;
+    
+    NSNumberFormatter *format = [NSNumberFormatter new];
+    
+    [format setNumberStyle:NSNumberFormatterDecimalStyle];
+    
+    NSString *formatted = [format stringFromNumber:[NSNumber numberWithInteger:_filtersToBeApplied.setMaxTuitionFilter]];
+    
+    _maxTuitionCounter.text = [NSString stringWithFormat:@"$%@", formatted];
+    
 }
 
 - (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView
@@ -61,7 +197,7 @@
 - (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component
 {
     
-    _filteredByState = [_stateAbbreviations objectAtIndex:row];
+    _filtersToBeApplied.filteredState = [_stateAbbreviations objectAtIndex:row];
     
 }
 
@@ -73,61 +209,7 @@
         
         resultsTableViewController *path = [segue destinationViewController];
         
-        path.filteredState = self.filteredByState;
-        
-        path.filteredType = self.filteredByType;
-        
-    }
-    
-}
-
-- (void) loadSelectedType
-{
-    
-    if ([_filteredByType isEqualToString:@"ALL"])
-    {
-        
-        _typeSelector.selectedSegmentIndex = 0;
-        
-    }
-    
-    else if ([_filteredByType isEqualToString:@"Private"])
-    {
-        
-        _typeSelector.selectedSegmentIndex = 1;
-        
-    }
-    
-    else if ([_filteredByType isEqualToString:@"Public"])
-    {
-        
-        _typeSelector.selectedSegmentIndex = 2;
-        
-    }
-    
-}
-
-- (IBAction)changeType:(id)sender
-{
-    
-    if(_typeSelector.selectedSegmentIndex == 2)
-    {
-        
-        _filteredByType = @"Public";
-        
-    }
-    
-    else if (_typeSelector.selectedSegmentIndex == 1)
-    {
-        
-        _filteredByType = @"Private";
-        
-    }
-    
-    else
-    {
-        
-        _filteredByType = @"ALL";
+        path.filters = self.filtersToBeApplied;
         
     }
     

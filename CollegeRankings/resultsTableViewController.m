@@ -7,20 +7,24 @@
 //
 
 #import "resultsTableViewController.h"
-#import "detailViewController.h"
+#import "detailTableViewController.h"
 #import "filtersViewController.h"
 #import "collegeObject.h"
 #import "resultsTableViewCell.h"
 
-@interface resultsTableViewController ()
+@interface resultsTableViewController () <UISearchResultsUpdating, UISearchBarDelegate>
 
-@property int numOfResults;
+@property (nonatomic, strong) UISearchController *searchController;
 
 @property NSMutableArray *resultsArray;
 
 @property NSMutableArray *filteredArray;
 
-@property NSArray *searchResults;
+@property NSMutableArray *searchResults;
+
+@property int numOfResults;
+
+@property BOOL isFiltered;
 
 @end
 
@@ -28,23 +32,89 @@
 
 - (void)viewDidLoad
 {
-    
+
     [super viewDidLoad];
+
+    self.numOfResults = 10;
+
+    [self calculateResults];
+
+    [self initFilters];
     
-    self.controller = [[UISearchController alloc] initWithSearchResultsController:nil];
+    [self loadSearchController];
+
+}
+
+- (void) initFilters
+{
     
-    self.controller.searchBar.delegate = self;
+    _filters = [[filterObject alloc] init];
+    
+    _filters.isFiltered = NO;
+    
+    _filters.filteredState = @"ALL";
+    
+    _filters.filteredType = @"ALL";
+    
+    _filters.maxTuitionFilter = [self getMaxTuition];
+    
+    _filters.setMaxTuitionFilter = [self getMaxTuition];
+    
+    _filters.minEnrollmentFilter = 0;
+    
+    _filters.maxEnrollmentFilter = [self getMaxEnrollment];
     
     self.numOfResults = 10;
     
-    self.filteredState = @"ALL";
+    self.showMoreResults.hidden = NO;
     
-    self.filteredType = @"ALL";
+    [self.tableView reloadData];
+
+}
+
+- (void) loadSearchController
+{
     
-    _resultsArray = [[NSMutableArray alloc] init];
+    self.searchResults = [[NSMutableArray alloc] init];
     
-    [self calculateResults];
+    self.searchController = [[UISearchController alloc] initWithSearchResultsController:nil];
     
+    self.searchController.dimsBackgroundDuringPresentation = NO;
+    
+    self.searchController.hidesNavigationBarDuringPresentation = NO;
+    
+    self.searchController.searchResultsUpdater = self;
+    
+    self.searchController.searchBar.frame = CGRectMake(self.searchController.searchBar.frame.origin.x, self.searchController.searchBar.frame.origin.y, self.searchController.searchBar.frame.size.width, 44.0);
+    
+    self.tableView.tableHeaderView = self.searchController.searchBar;
+    
+    self.searchController.searchBar.delegate = self;
+    
+    self.definesPresentationContext = YES;
+    
+}
+
+- (int) getMaxTuition
+{
+
+    int returnValue = [[_resultsArray valueForKeyPath:@"@max.out"] intValue];
+    
+    returnValue = 50.0 * floor((returnValue/50.0)+0.5);
+    
+    return returnValue;
+
+}
+
+- (int) getMaxEnrollment
+{
+
+    int returnValue = [[_resultsArray valueForKeyPath:@"@max.undergradFullTimeEnrollment"] intValue];
+    
+    returnValue = 50.0 * floor((returnValue/50.0)+0.5);
+    
+    return returnValue;
+
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -57,40 +127,28 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     
-    if (tableView == self.tableView)
+    if (self.searchController.active)
     {
         
-        return self.numOfResults;
+        return [self.searchResults count];
         
     }
     
-    else
-    {
-        
-        return [_searchResults count];
+    return self.numOfResults;
 
-    }
-    
-}
-
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    
-    return 51;
-    
 }
 
 - (IBAction) loadMoreResults
 {
-    
-    if(![_filteredState isEqualToString:@"ALL"])
+
+    if(_filters.isFiltered == YES)
     {
         
         [self loadMoreResults:_filteredArray];
         
     }
     
-    else if([_filteredState isEqualToString:@"ALL"])
+    else if(_filters.isFiltered == NO)
     {
         
         [self loadMoreResults:_resultsArray];
@@ -129,27 +187,27 @@
     
     resultsTableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:@"school"];
     
-    if (!(tableView == self.tableView))
+    if (self.searchController.active)
     {
         
         cell.uniName.text = [[_searchResults objectAtIndex:indexPath.row] name];
         
         cell.uniTown.text = [NSString stringWithFormat:@"%@, %@", [[_searchResults objectAtIndex:indexPath.row] city], [[_searchResults objectAtIndex:indexPath.row] collegeState]];
         
-        cell.uniRank.text = [NSString stringWithFormat: @"%i", [[_searchResults objectAtIndex:indexPath.row] ranking]];
+        cell.uniRank.text = [NSString stringWithFormat: @"%i", (int)[[_searchResults objectAtIndex:indexPath.row] ranking]];
         
         return cell;
-
+        
     }
     
-    else if([_filteredState isEqualToString:@"ALL"] && [_filteredType isEqualToString:@"ALL"])
+    else if(_filters.isFiltered == NO)
     {
         
         cell.uniName.text = [[_resultsArray objectAtIndex:indexPath.row] name];
         
         cell.uniTown.text = [NSString stringWithFormat:@"%@, %@", [[_resultsArray objectAtIndex:indexPath.row] city], [[_resultsArray objectAtIndex:indexPath.row] collegeState]];
         
-        cell.uniRank.text = [NSString stringWithFormat: @"%i", [[_resultsArray objectAtIndex:indexPath.row] ranking]];
+        cell.uniRank.text = [NSString stringWithFormat: @"%i", (int)[[_resultsArray objectAtIndex:indexPath.row] ranking]];
         
         return cell;
         
@@ -162,7 +220,7 @@
         
         cell.uniTown.text = [NSString stringWithFormat:@"%@, %@", [[_filteredArray objectAtIndex:indexPath.row] city], [[_filteredArray objectAtIndex:indexPath.row] collegeState]];
         
-        cell.uniRank.text = [NSString stringWithFormat: @"%i", [[_filteredArray objectAtIndex:indexPath.row] ranking]];
+        cell.uniRank.text = [NSString stringWithFormat: @"%i", (int)[[_filteredArray objectAtIndex:indexPath.row] ranking]];
         
         return cell;
         
@@ -173,311 +231,197 @@
 -(IBAction) filterViewDidUnwind:(UIStoryboardSegue *) segue
 {
     
-    if ([_filteredState isEqualToString:@"ALL"] && [_filteredType isEqualToString:@"ALL"])
-    {
-        
-        [self clearFilters];
-        
-    }
-    
-    else if ((![_filteredState isEqualToString:@"ALL"]) && [_filteredType isEqualToString:@"ALL"])
-    {
-        
-        [self filterByState:YES type:NO];
-        
-    }
-    
-    else if ((![_filteredState isEqualToString:@"ALL"]) && (![_filteredType isEqualToString:@"ALL"]))
-    {
-        
-        [self filterByState:YES type:YES];
-        
-    }
-    
-    else if ([_filteredState isEqualToString:@"ALL"] && (![_filteredType isEqualToString:@"ALL"]))
-    {
-        
-        [self filterByState:NO type:YES];
-        
-        
-    }
+    [self filterResultsArray:_filters];
     
     [self.tableView reloadData];
     
 }
 
-- (void) filterByState:(BOOL)state type:(BOOL)type
+- (void) filterResultsArray:(filterObject *) filtersApplied
+{
+
+    int rankingIndex = 0;
+
+    collegeObject *collegeObject;
+        
+    _filteredArray = [[NSMutableArray alloc] init];
+        
+    for(int i=0; i<[_resultsArray count]; i++)
+    {
+        
+        collegeObject = [_resultsArray objectAtIndex:i];
+
+        if([self collegeMeetsFilterRequirement:_filters college:collegeObject])
+        {
+
+            rankingIndex++;
+            
+            collegeObject.ranking = rankingIndex;
+            
+            [_filteredArray addObject:collegeObject];
+
+        }
+       
+    }
+    
+    _filters.isFiltered = YES;
+
+    if([_filteredArray count] < 10)
+    {
+
+        self.numOfResults = (int)[_filteredArray count];
+        
+        self.showMoreResults.hidden = YES;
+
+    }
+    
+    else
+    {
+        
+        self.numOfResults = 10;
+        
+        self.showMoreResults.hidden = NO;
+
+    }
+    
+}
+
+- (BOOL) collegeMeetsFilterRequirement:(filterObject *) filtersToApply college:(collegeObject *) collegeToBeFiltered
 {
     
-    int rankingIndex = 0;
-    
-    collegeObject *object;
-    
-    if (state && !type)
+    if (![[collegeToBeFiltered collegeState] isEqualToString:[_filters filteredState]] && ![[_filters filteredState] isEqualToString:@"ALL"])
     {
-        
-        _filteredArray = [[NSMutableArray alloc] init];
-        
-        for(int i=0; i<[_resultsArray count]; i++){
-            
-            if([[[_resultsArray objectAtIndex:i] collegeState] isEqualToString:_filteredState])
-            {
-                
-                rankingIndex++;
-                
-                object = [_resultsArray objectAtIndex:i];
-                
-                object.ranking = rankingIndex;
-                
-                [_filteredArray addObject:object];
-                
-            }
-            
-        }
-        
-        if([_filteredArray count] < 10)
-        {
-            
-            self.numOfResults = (int)[_filteredArray count];
-            self.showMoreResults.hidden = YES;
-            
-        }
-        
-        else
-        {
-            
-            self.numOfResults = 10;
-            self.showMoreResults.hidden = NO;
-            
-        }
+
+        return NO;
         
     }
     
-    if (state && type)
+    else if(![[collegeToBeFiltered collegeType] isEqualToString:[_filters filteredType]] && ![[_filters filteredType] isEqualToString:@"ALL"])
     {
         
-        _filteredArray = [[NSMutableArray alloc] init];
-        
-        for(int i=0; i<[_resultsArray count]; i++)
-        {
-            
-            if([[[_resultsArray objectAtIndex:i] collegeState] isEqualToString:_filteredState] && [[[_resultsArray objectAtIndex:i] collegeType] isEqualToString:_filteredType])
-            {
-                
-                rankingIndex++;
-                
-                object = [_resultsArray objectAtIndex:i];
-                
-                object.ranking = rankingIndex;
-                
-                [_filteredArray addObject:object];
-                
-            }
-            
-        }
-        
-        if([_filteredArray count] < 10)
-        {
-            
-            self.numOfResults = (int)[_filteredArray count];
-            self.showMoreResults.hidden = YES;
-            
-        }
-        
-        else
-        {
-            
-            self.numOfResults = 10;
-            self.showMoreResults.hidden = NO;
-            
-        }
+        return NO;
         
     }
     
-    if (!state && type)
+    else if([collegeToBeFiltered out] > (int)[_filters setMaxTuitionFilter])
     {
         
-        _filteredArray = [[NSMutableArray alloc] init];
-        
-        for(int i=0; i<[_resultsArray count]; i++)
-        {
-            
-            if([[[_resultsArray objectAtIndex:i] collegeType] isEqualToString:_filteredType])
-            {
-                
-                rankingIndex++;
-                
-                object = [_resultsArray objectAtIndex:i];
-                
-                object.ranking = rankingIndex;
-                
-                [_filteredArray addObject:object];
-            }
-            
-        }
-        
-        if([_filteredArray count] < 10)
-        {
-            
-            self.numOfResults = (int)[_filteredArray count];
-            self.showMoreResults.hidden = YES;
-            
-        }
-        
-        else
-        {
-            
-            self.numOfResults = 10;
-            self.showMoreResults.hidden = NO;
-            
-        }
+        return NO;
         
     }
+    
+    else if([collegeToBeFiltered undergradFullTimeEnrollment] > (int)[_filters setMaxEnrollmentFilter])
+    {
+        
+        return NO;
+        
+    }
+    
+    else if ([collegeToBeFiltered undergradFullTimeEnrollment] < (int)[_filters minEnrollmentFilter])
+    {
+        
+        return NO;
+        
+    }
+    
+    return YES;
     
 }
 
 -(IBAction) clearFilters:(UIStoryboardSegue *) segue
 {
     
-    [self clearFilters];
+    [self initFilters];
     
 }
 
-- (void) clearFilters
+-(void)updateSearchResultsForSearchController:(UISearchController *)searchController
 {
     
-    _filteredState = @"ALL";
+    self.showMoreResults.hidden = YES;
     
-    _filteredType = @"ALL";
+    NSString *searchString = [self.searchController.searchBar text];
     
-    self.numOfResults = 10;
+    NSString *scope = nil;
     
-    self.showMoreResults.hidden = NO;
+    [self updateFilteredContentForName:searchString type:scope];
     
     [self.tableView reloadData];
     
 }
 
-- (void) calculateResults
+- (void)updateFilteredContentForName:(NSString *)name type:(NSString *)typeName
 {
     
-#include "collegeData.h"
-    
-    float myArray[11] = {[[self.surveyInput objectAtIndex:0] floatValue], [[self.surveyInput objectAtIndex:1] floatValue], [[self.surveyInput objectAtIndex:2] floatValue],[[self.surveyInput objectAtIndex:3] floatValue], [[self.surveyInput objectAtIndex:4] floatValue], [[self.surveyInput objectAtIndex:5] floatValue], [[self.surveyInput objectAtIndex:6] floatValue], [[self.surveyInput objectAtIndex:7] floatValue], [[self.surveyInput objectAtIndex:8] floatValue], [[self.surveyInput objectAtIndex:9] floatValue], [[self.surveyInput objectAtIndex:10] floatValue]};
-    
-    float myResult[1989];
-    float temp1[1989];
-    float temp2[1989];
-    float temp3[1989];
-    
-    float sum = 0.0;
-    int rows=1989;
-    int columns=11;
-    int i,j,k;
-    
-    for (i=0; i < rows ; i++ )
+    if ((name == nil) || [name length] == 0)
     {
-        sum = 0.0;
-        for ( k = 0 ; k < columns ; k++ )
+        if (_filters.isFiltered == NO)
         {
-            sum = sum + myMatrix1[i][k]*myArray[k];
-        }
-        
-        temp1[i] = sum;
-        sum = 0.0;
-    }
-    
-    for (i=0; i < rows ; i++ )
-    {
-        sum = 0.0;
-        
-        for ( k = 0 ; k < columns ; k++ )
-        {
-            sum = sum + myMatrix2[i][k]*myArray[k];
-        }
-        
-        temp2[i] = sum;
-        sum = 0.0;
-    }
-    
-    for ( k = 0 ; k < rows ; k++ )
-    {
-        temp3[k] = temp1[k]/temp2[k];
-        myResult[k] = (temp1[k]/temp2[k])*100.0;
-    }
-    
-    for (j=0;j< keysArray.count; j++)
-    {
-        
-        [rankingsListing setObject :[NSNumber numberWithFloat:myResult[j]] forKey: keysArray[j]];
-        
-    };
-    
-    NSComparisonResult (^cmp)(id, id) = ^(id obj1, id obj2)
-    {
-        
-        return [obj2 compare:obj1];
-        
-    };
-    
-    // Problem here in sorting keys
-    NSArray *orderedKeys = [rankingsListing keysSortedByValueUsingComparator:cmp];
-    
-    NSArray *items;
-    
-    int resultsRanking = 0;
-    
-    for (id key in orderedKeys)
-    {
-        
-        resultsRanking++;
-        
-        items = [key componentsSeparatedByString:@","];
-        collegeObject *result = [[collegeObject alloc] init];
-        result.name = items[0];
-        result.city = items[1];
-        result.collegeState = items[2];
-        result.url = items[3];
-        result.collegeType = items[4];
-        result.ins = items[5];
-        result.out = items[6];
-        result.ranking = resultsRanking;
-        
-        [_resultsArray addObject:result];
-        
-    }
-    
-    [self.tableView reloadData];
-    
-}
+            
+            self.searchResults = [self.resultsArray mutableCopy];
 
-- (void)filterContentForSearchText:(NSString*)searchText scope:(NSString*)scope
-{
-    
-    NSPredicate *resultPredicate = [NSPredicate predicateWithFormat:@"name contains[c] %@", searchText];
-    
-    if([_filteredState isEqualToString:@"ALL"] && [_filteredType isEqualToString:@"ALL"])
-    {
+        }
         
-        _searchResults = [_resultsArray filteredArrayUsingPredicate:resultPredicate];
+        else
+        {
+            
+            self.searchResults = [self.filteredArray mutableCopy];
+            
+        }
+        
+        return;
+        
+    }
+    
+    [self.searchResults removeAllObjects];
+
+    if (_filters.isFiltered == NO)
+    {
+    
+        for (collegeObject *college in self.resultsArray)
+        {
+                
+                NSUInteger searchOptions = NSCaseInsensitiveSearch | NSDiacriticInsensitiveSearch;
+                
+                NSRange nameRange = NSMakeRange(0, college.name.length);
+                
+                NSRange foundRange = [college.name rangeOfString:name options:searchOptions range:nameRange];
+                
+                if (foundRange.length > 0)
+                {
+                    
+                    [self.searchResults addObject:college];
+                    
+                }
+            
+        }
         
     }
     
     else
     {
-        
-        _searchResults = [_filteredArray filteredArrayUsingPredicate:resultPredicate];
+        for (collegeObject *college in self.filteredArray)
+        {
+                
+                NSUInteger searchOptions = NSCaseInsensitiveSearch | NSDiacriticInsensitiveSearch;
+                
+                NSRange nameRange = NSMakeRange(0, college.name.length);
+                
+                NSRange foundRange = [college.name rangeOfString:name options:searchOptions range:nameRange];
+                
+                if (foundRange.length > 0)
+                {
+                    
+                    [self.searchResults addObject:college];
+                    
+                }
+            
+        }
         
     }
     
 }
 
-- (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText
-{
-    
-    [self filterContentForSearchText:searchText scope:nil];
-    
-}
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
@@ -485,20 +429,20 @@
     if([[segue identifier] isEqualToString:@"detailVC"])
     {
         
-        detailViewController *detailView = [segue destinationViewController];
+        detailTableViewController *detailView = [segue destinationViewController];
         
         NSIndexPath *myIndexPath = [self.tableView indexPathForSelectedRow];
         
-        if (self.controller.active)
+        if (self.searchController.active)
         {
             
-            //myIndexPath = [self.controller.searchResultsController indexPathForSelectedRow];
+            NSIndexPath *indexPath = [self.tableView indexPathForCell:sender];
             
-            detailView.collegeInfo = [_searchResults objectAtIndex:myIndexPath.row];
+            detailView.collegeInfo = [_searchResults objectAtIndex:indexPath.row];
             
         }
         
-        else if([_filteredState isEqualToString:@"ALL"] && [_filteredType isEqualToString:@"ALL"])
+        else if(_filters.isFiltered == NO)
         {
             
             detailView.collegeInfo = [_resultsArray objectAtIndex:myIndexPath.row];
@@ -516,17 +460,177 @@
     
     else if ([[segue identifier] isEqualToString:@"filtersVC"])
     {
-        
+
         UINavigationController *nav = segue.destinationViewController;
-        
+
         filtersViewController *filtersView = (filtersViewController *) nav.topViewController;
-        
-        filtersView.filteredByState = self.filteredState;
-        
-        filtersView.filteredByType = self.filteredType;
+
+        filtersView.filtersToBeApplied = self.filters;
         
     }
     
+}
+
+- (void) calculateResults
+{
+
+    _resultsArray = [[NSMutableArray alloc] init];
+
+    NSString *urlToLocalMatrix = [[NSBundle mainBundle] pathForResource:@"count_matrix" ofType:@"csv"];
+
+    NSString *stringOfMatrix = [NSString stringWithContentsOfFile:urlToLocalMatrix encoding:NSUTF8StringEncoding error:nil];
+    
+    NSArray *countMatrixArray = [stringOfMatrix componentsSeparatedByString:@"\n"];
+
+    NSMutableArray *countMatrix = [[NSMutableArray alloc] init];
+    
+    for (int i=0; i<[countMatrixArray count]; i++)
+    {
+        
+        NSArray *entry = [[countMatrixArray objectAtIndex:i] componentsSeparatedByString:@","];
+        
+        [countMatrix addObject:entry];
+        
+    }
+    
+    NSString *urlToLocalSchoolsFile = [[NSBundle mainBundle] pathForResource:@"schools" ofType:@"csv"];
+    
+    NSString *stringOfSchools = [NSString stringWithContentsOfFile:urlToLocalSchoolsFile encoding:NSUTF8StringEncoding error:nil];
+    
+    NSArray *schoolsArray = [stringOfSchools componentsSeparatedByString:@"\n"];
+    
+    NSMutableArray *schools = [[NSMutableArray alloc] init];
+    
+    for (int i=0; i<[schoolsArray count]; i++)
+    {
+
+        NSArray *entry = [[schoolsArray objectAtIndex:i] componentsSeparatedByString:@","];
+
+        if ([entry count] > 0)
+        {
+            
+            collegeObject *entrySchool = [[collegeObject alloc] init];
+
+            entrySchool.id = i;
+            entrySchool.name = entry[0];
+            entrySchool.city = entry[1];
+            entrySchool.collegeState = entry[2];
+            entrySchool.url = entry[3];
+            entrySchool.collegeType = entry[4];
+            entrySchool.ins = [entry[5] intValue];
+            entrySchool.out = [entry[6] intValue];
+            entrySchool.undergradEnrollment = [entry[7] intValue];
+            entrySchool.undergradFullTimeEnrollment = [entry[8] intValue];
+            entrySchool.undergradPartTimeEnrollment = [entry[9] intValue];
+
+            [schools addObject:entrySchool];
+            
+        }
+
+    }
+    
+    NSString *urlToLocalZmatrixFile = [[NSBundle mainBundle] pathForResource:@"z_matrix" ofType:@"csv"];
+    
+    NSString *stringOfZmatrix = [NSString stringWithContentsOfFile:urlToLocalZmatrixFile encoding:NSUTF8StringEncoding error:nil];
+    
+    NSArray *zMatrixArray = [stringOfZmatrix componentsSeparatedByString:@"\n"];
+    
+    NSMutableArray *z_matrix = [[NSMutableArray alloc] init];
+    
+    for (int i=0; i<[zMatrixArray count]; i++)
+    {
+        
+        NSMutableArray *entry = [[NSMutableArray alloc] initWithArray:[[zMatrixArray objectAtIndex:i] componentsSeparatedByString:@","]];
+        
+        [entry removeObjectAtIndex:[entry count]-1];
+        
+        [z_matrix addObject:entry];
+        
+    }
+    
+    NSMutableArray *tempArray = [[NSMutableArray alloc] init];
+    
+    float sum = 0.0;
+    
+    for (int i=0; i<[z_matrix count]; i++)
+    {
+        
+        sum = 0.0;
+        
+        for (int k=0; k<[[z_matrix objectAtIndex:i] count]-1; k++)
+        {
+            
+            NSArray *temporaryArray = [z_matrix objectAtIndex:i];
+                
+            sum = sum + [[temporaryArray objectAtIndex:k] floatValue]*[[_surveyInputValues objectAtIndex:k] floatValue];
+            
+        }
+        
+        NSNumber *number = [NSNumber numberWithFloat:sum];
+        
+        [tempArray addObject:number];
+        
+        sum = 0.0;
+        
+    }
+    
+    NSMutableArray *tempArray2 = [[NSMutableArray alloc] init];
+    
+    for (int i=0; i<[countMatrix count]; i++)
+    {
+        
+        sum = 0.0;
+        
+        for (int k=0; k<[[countMatrix objectAtIndex:i] count]-1; k++)
+        {
+            
+            sum = sum + [[[countMatrix objectAtIndex:i] objectAtIndex:k] floatValue]*[[_surveyInputValues objectAtIndex:k] floatValue];
+            
+        }
+        
+        NSNumber *number = [NSNumber numberWithFloat:sum];
+        
+        [tempArray2 addObject:number];
+        
+        sum = 0.0;
+        
+    }
+    
+    NSMutableArray *tempArray3 = [[NSMutableArray alloc] init];
+    
+    for (int i=0; i<[tempArray count]; i++)
+    {
+        
+        float tempCalc = ([[tempArray objectAtIndex:i] floatValue]/[[tempArray2 objectAtIndex:i] floatValue])*100.0;
+        
+        NSNumber *number = [NSNumber numberWithFloat:tempCalc];
+        
+        [tempArray3 addObject:number];
+        
+    }
+
+    for (int i=0; i<[schools count]; i++)
+    {
+        
+        collegeObject *tempCollegeObject = [schools objectAtIndex:i];
+        tempCollegeObject.ranking = [[tempArray3 objectAtIndex:i] floatValue];
+        [schools replaceObjectAtIndex:i withObject:tempCollegeObject];
+        
+    }
+
+    [schools sortUsingDescriptors: [NSArray arrayWithObjects:[NSSortDescriptor sortDescriptorWithKey:@"ranking" ascending:NO], nil]];
+    
+    for (int i=0; i<[schools count]; i++)
+    {
+        collegeObject *tempCollegeObject = [schools objectAtIndex:i];
+        tempCollegeObject.ranking = i+1;
+        [schools replaceObjectAtIndex:i withObject:tempCollegeObject];
+    }
+    
+    _resultsArray = schools;
+
+    [self.tableView reloadData];
+
 }
 
 @end
