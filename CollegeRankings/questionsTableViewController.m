@@ -163,7 +163,7 @@
     for (int i=0; i<[_surveyInput count]; i++)
     {
         
-        float newValue = [[_surveyInput objectAtIndex:i] floatValue]/_totalValueEntered;
+        float newValue = ([[_surveyInput objectAtIndex:i] floatValue]/_totalValueEntered)*100;
         
         NSNumber *inputValue = [NSNumber numberWithFloat:newValue];
         
