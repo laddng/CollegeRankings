@@ -354,10 +354,17 @@
 
 -(void)updateSearchResultsForSearchController:(UISearchController *)searchController
 {
-    
-    self.showMoreResults.hidden = YES;
-    
+
     NSString *searchString = [self.searchController.searchBar text];
+    
+    if ([searchString isEqualToString:@""])
+    {
+        self.showMoreResults.hidden = NO;
+    }
+    else
+    {
+        self.showMoreResults.hidden = YES;
+    }
     
     NSString *scope = nil;
     
